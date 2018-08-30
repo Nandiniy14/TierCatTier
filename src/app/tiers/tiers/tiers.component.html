@@ -1,0 +1,135 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+<mat-tab-group>
+    <mat-tab label="Details"> 
+        <div class="container">
+  
+            <form>
+              <div class= "row">
+                  <div class="col-xs-4">
+                      <label for="ex2">Client Name</label>
+                      <input class="form-control" id="name" *ngFor="let element of dataObj" value="{{element.clientName}}" type="text">
+                    </div>
+                    <div class="col-xs-4">
+                      <label for="ex2"> ClientFees Owner</label>
+                      <input class="form-control" id="owner" *ngFor="let element of dataObj" value="{{element.clientFeesOwner}}" type="text">
+                    </div>
+
+              </div>
+              <div class = "row">
+                  <div class="col-xs-4">
+                      <label for="ex2">Email</label>
+                      <input class="form-control" id="email" *ngFor="let element of dataObj" value="{{element.email}}" type="text">
+                  </div>
+                  <div class="col-xs-4">
+                      <label for="ex2">Secondary Email</label>
+                      <input class="form-control" id="semail" *ngFor="let element of dataObj" value="{{element.secondayEmail}}" type="text">
+                    </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-4">
+                      <label for="ex2">Created By</label>
+                      <input class="form-control" id="created" *ngFor="let element of dataObj" value="{{element.createdBy}}" type="text">
+                  </div>
+                  <div class="col-xs-4">
+                      <label for="ex2">Modified By</label>
+                      <input class="form-control" id="modified" *ngFor="let element of dataObj" value="{{element.modifiedBy}}" type="text">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-4">
+                      <label for="ex2">Currency</label>
+                      <input class="form-control" id="currency" *ngFor="let element of dataObj" value="{{element.currency}}" type="text">
+                  </div>
+                  <div class="col-xs-4">
+                      <label for="ex2">Email Opt Out</label>
+                      <input class="form-control" id="emailOpt" *ngFor="let element of dataObj" value="{{element.emailOptOut}}" type="text">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-4">
+                      <label for="ex2">Carrier ID</label>
+                      <input class="form-control" id="ex2" type="text">
+                  </div>
+                  <div class="col-xs-4">
+                      <label for="ex2">Exchange Rate</label>
+                      <input class="form-control" id="ex2" type="text">
+                  </div>
+              </div> 
+              <br>
+              <button mat-raised-button color="primary"  type="submit">Save</button>
+                 
+            </form>
+          </div>
+
+      
+    </mat-tab> 
+
+    <mat-tab label="Tiers"> 
+            <div class="row">
+                    <div class="fieldBlock">
+                        <div class="title">Lower Limit</div>
+                        <input id="llimit" *ngFor="let element of tierData" value="{{element.llimit}}" />
+                    </div>
+                        
+                    <div class="fieldBlock">
+                        <div class="title">Upper Limit</div>
+                        <input id="ulimit" *ngFor="let element of tierData" value="{{element.ulimit}}" />
+            
+                    </div>
+                    
+                    <div class="fieldBlock">
+                        <div class="title">SKU</div>
+                        <input id="sku" *ngFor="let element of tierData" value="{{element.sku}}" />
+                        
+                    </div>
+                </div>
+                  
+                    <div class="row">
+                        <!-- <button mat-icon-button color="primary" (click)="onCat()" type="button" style="font-size:25px"> <i class="fa fa-plus"></i> 
+                        
+                        </button> -->
+            
+                        <app-add-tier></app-add-tier>
+            
+                    </div>
+    </mat-tab> 
+
+
+    <mat-tab label="Cat-Tiers"> 
+
+       <div class="row">
+        <div class="fieldBlock">
+            <div class="title">Lower Limit</div>
+            <input id="llimit" *ngFor="let element of catTierData" value="{{element.llimit}}" />
+        </div>
+            
+        <div class="fieldBlock">
+            <div class="title">Upper Limit</div>
+            <input id="ulimit" *ngFor="let element of catTierData" value="{{element.ulimit}}" />
+
+        </div>
+        
+        <div class="fieldBlock">
+            <div class="title">SKU</div>
+            <input id="sku" *ngFor="let element of catTierData" value="{{element.sku}}" />
+            
+        </div>
+    </div>
+      
+        <div class="row">
+            <!-- <button mat-icon-button color="primary" (click)="onCat()" type="button" style="font-size:25px"> <i class="fa fa-plus"></i> 
+            
+            </button> -->
+
+            <app-add-cat-tier> </app-add-cat-tier>
+
+        </div>
+
+        
+    </mat-tab>
+
+</mat-tab-group>

@@ -1,0 +1,33 @@
+
+   <mat-card class="add-card">
+      <form class="example-form" [formGroup]="addForm" (ngSubmit)="onSubmit()" >
+      <mat-card-header> 
+         <mat-card-title> Add Cat Tier </mat-card-title>
+      </mat-card-header>
+      <mat-form-field class="example-full-width">
+           <input matInput mat-header-cell placeholder="Enter Lower Limit" formControlName="llimit">
+      </mat-form-field>
+      <mat-form-field class="example-full-width"> 
+         <input matInput placeholder="Enter the Upper Limit" formControlName="ulimit">
+      </mat-form-field> 
+      <mat-form-field class="example-full-width"> 
+          <input matInput placeholder="Enter SKU " formControlName="sku">
+       </mat-form-field> 
+      <button mat-raised-button color="primary"  type="submit">Submit</button>
+      
+      </form>
+      
+  </mat-card>  
+
+  
+    
+    
+    
+     
+
+        
+        
+      
+
+  
+  

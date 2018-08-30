@@ -1,0 +1,25 @@
+
+  <mat-card class="add-card">
+      <form class="example-form" [formGroup]="addForm" (ngSubmit)="onSubmit()" >
+      <mat-card-header> 
+         <mat-card-title> Add Status Fee </mat-card-title>
+      </mat-card-header>
+      <mat-form-field class="example-full-width">
+           <input matInput mat-header-cell placeholder="Add Field" formControlName="addField">
+      </mat-form-field>
+      <mat-form-field class="example-full-width"> 
+         <input matInput placeholder="Enter the Value" formControlName="value">
+      </mat-form-field> 
+      <button mat-raised-button color="primary"  type="submit">Submit</button>
+      
+      </form>
+      
+  </mat-card> 
+     
+
+        
+        
+      
+
+  
+  

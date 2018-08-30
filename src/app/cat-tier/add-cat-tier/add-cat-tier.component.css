@@ -1,0 +1,30 @@
+ .add-card {
+    max-width: 400px;
+    margin: auto;
+    top: 15px
+  }
+  
+  .mat-card-header {
+    background-color: #DCDCDC	;
+    padding-top: 15px;
+    color: #fff;
+  }
+  .mat-card-title {
+    font-size: 18px;
+    color:rgb(61, 57, 57);
+  }
+  
+  .mat-card-actions {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-top: 10px !important;
+  }
+  
+   
+
+  
