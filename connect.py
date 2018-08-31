@@ -3,6 +3,7 @@ from flask import jsonify,request
 from pymongo import MongoClient
 from flask_cors import CORS
 import json
+from bson.objectid import ObjectId
 
 
 client = MongoClient('localhost', 27017) 
@@ -86,21 +87,54 @@ def addTier():
 		addTier.insert({ "llimit":i['llimit'], "ulimit":i['ulimit'], "sku":i['sku']})
 	return "Success"
 
-@app.route("/update", methods=['POST'])
+@app.route("/update", methods=['POST','GET'])
 def updateDetails ():
 	users = db.details
-	name=request.values.get("clientName")
-	feeOwner=request.values.get("clientFeesOwner")
-	email=request.values.get("email")
-	semail=request.values.get("secondaryEmail")
-	id=request.values.get("_id")
+	values = request.json
+	print(values)
+	# id=request.values.get("_id")
+	# print(id)
+	# task=users.find({"_id":ObjectId(id)})
+	# print(task)
+	
+
+	itm = db.details.find_one({})
+	print (itm.get('_id'))
+
+	users.update({"_id":itm.get('_id')},
+	 	{
+		 '$set':{
+			'clientName':values['name'],
+			'clientFeesOwner':values['feesowner'],
+			'email':values['email'],
+			'secondaryEmail':values['semail'],
+			'createdBy':values['created'],
+			'modifiedBy':values['modified'],
+			'currency':values['currency'],
+			'emailOptOut':values['emailOpt'],
+			'carrierID':values['carrier'],
+			'exchangeRate':values['exchange']
+			}
+		}
+	)
+
+	# users.update( {"_id":ObjectId(id)}, {'clientName':values['name'],'clientFeesOwner':values['feesowner'],'email':values['email'],\
+	# 	'secondaryEmail':values['semail'],'createdBy':values['created'],\
+	# 	'modifiedBy':values['modified'],'currency':values['currency'],'emailOptOut':values['emailOpt'],\
+	# 	'carrierID':values['carrier'],'exchangeRate':values['exchange']} ) 
+
+
+	# feeOwner=request.values.get("clientFeesOwner")
+	# email=request.values.get("email")
+	# semail=request.values.get("secondaryEmail")
+	# id=request.values.get("_id")
 	# created=request.values.get("createdBy")
 	# modifies=request.values.get("modifiedBy")
 	# currency=request.values.get("currency")
 	# emailOpt=request.values.get("emailOptOut")
 	# carrier=request.values.get("carrierID")
 	# exchange=request.values.get("exchangeRate")
-	users.update({"_id":ObjectId(id)}, {'$set':{ "name":clientName, "fees":clientFeesOwner, "email":email, "semail":secondaryEmail}})
+	# users.update({"_id":ObjectId(id)}, {'$set':{ "name":clientName, "fees":clientFeesOwner, "email":email, "semail":secondaryEmail}})
 	return "Updated"
 
 
