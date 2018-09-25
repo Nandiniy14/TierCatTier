@@ -1,0 +1,127 @@
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<mat-tab-group>
+        <mat-tab label="Details">
+                <app-details [clientName]="clientName"></app-details>
+
+        </mat-tab>
+
+        <mat-tab label="Tiers">
+                <div class="row">
+                        <div class="fieldBlock">
+                                <div class="title">Lower Limit</div>
+                        </div>
+
+                        <div class="fieldBlock">
+                                <div class="title">Upper Limit</div>
+
+                        </div>
+
+                        <div class="fieldBlock">
+                                <div class="title">SKU</div>
+
+                        </div>
+                </div>
+                <div *ngFor="let element of tierData;" class="row">
+                        <div class="fieldBlock">
+                                <input id="min" value="{{element.min}}" />
+                        </div>
+
+                        <div class="fieldBlock">
+                                <input id="max" value="{{element.max}}" />
+
+                        </div>
+
+                        <div class="fieldBlock">
+
+                                <input id="sku" value="{{element.sku}}" />
+
+                        </div>
+                </div>
+
+                <div class="row">
+                        <app-add-tier [clientName]="clientName"></app-add-tier>
+                </div>
+        </mat-tab>
+
+
+        <mat-tab label="Cat-Tiers">
+                <form #catTierForm="ngForm" (ngSubmit)="getCatTier()">
+                        <div class="row">
+
+                                <div class="fieldBlock">
+                                        <mat-form-field>
+                                                <mat-select placeholder="Select a CatTier" (valueChange)="selectCatTier($event)" name="catTier" [(ngModel)]="catTier" [formControl]="catTierControl"
+                                                        required>
+                                                        <mat-option>--</mat-option>
+                                                        <mat-option *ngFor="let catTier of catTierFeesNames" [value]="catTier">{{catTier}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="catTierControl.hasError('required')">Please choose a catTier</mat-error>
+
+                                        </mat-form-field>
+                                </div>
+
+                                <div class="fieldBlock">
+                                        <button mat-raised-button color="primary" type="submit">Go</button>
+
+                                </div>
+
+                        </div>
+                        <div class="row">
+                                <app-cat-tier-fees [clientName]="clientName"></app-cat-tier-fees>
+
+                        </div>
+
+
+                </form>
+
+                <div class="row">
+                        <div class="fieldBlock">
+                                <div class="title">Lower Limit</div>
+                        </div>
+
+                        <div class="fieldBlock">
+                                <div class="title">Upper Limit</div>
+
+                        </div>
+
+                        <div class="fieldBlock">
+                                <div class="title">SKU</div>
+
+                        </div>
+                </div>
+                <div *ngFor="let element of catTierFees;" class="row">
+                        <div class="fieldBlock">
+                                <input id="min" value="{{element.min}}" />
+                        </div>
+
+                        <div class="fieldBlock">
+                                <input id="max" value="{{element.max}}" />
+
+                        </div>
+
+                        <div class="fieldBlock">
+
+                                <input id="sku" value="{{element.sku}}" />
+
+                        </div>
+                </div>
+
+
+                <div class="row">
+                        <app-add-cat-tier [clientName]="clientName" [catTierName]="selectedCatTier"> </app-add-cat-tier>
+
+                </div>
+
+        </mat-tab>
+
+
+
+        <mat-tab label="Static-Fees">
+                <app-status-fee [clientName]="clientName"> </app-status-fee>
+        </mat-tab>
+
+</mat-tab-group>
